@@ -1,0 +1,5 @@
+{
+  "name": "GitBuild AI",
+  "description": "A sophisticated web-building companion that connects to your GitHub repositories, analyzes codebases, and uses Gemini 3 Pro to generate components, fix bugs, and scaffold new features.",
+  "requestFramePermissions": []
+}

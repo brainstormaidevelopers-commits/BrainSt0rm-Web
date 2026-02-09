@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Company</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            font-family: 'Courier New', monospace;
+            color: #00ff00;
+            min-height: 100vh;
+            text-shadow: 0 0 5px #00ff00;
+        }
+
+        /* Scanline CRT effect */
+        .crt::before {
+            content: " ";
+            display: block;
+            position: fixed;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%), 
+                        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+            z-index: 9999;
+            background-size: 100% 2px, 2px 100%;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        .ascii-art {
+            font-family: 'Courier New', monospace;
+            font-size: 3px;
+            line-height: 1;
+            white-space: pre;
+            color: #00ff00;
+            margin-bottom: 40px;
+            overflow-x: auto;
+            padding: 20px;
+            text-shadow: 0 0 3px #00ff00;
+            filter: brightness(1.2);
+        }
+
+        .cursor {
+            display: inline-block;
+            background-color: #00ff00;
+            width: 8px;
+            height: 16px;
+            margin-left: 2px;
+            animation: blink 1s infinite;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        input, textarea {
+            background: transparent !important;
+            border: 1px solid #004400 !important;
+            color: #00ff00 !important;
+            font-family: 'Courier New', monospace !important;
+            outline: none !important;
+        }
+        
+        input:focus {
+            border-color: #00ff00 !important;
+        }
+
+        button {
+            font-family: 'Courier New', monospace !important;
+            background: transparent;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 4px 12px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        .terminal-panel {
+            border: 1px solid #004400;
+            background: #000;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @media (max-width: 768px) {
+            .ascii-art { font-size: 2px; }
+        }
+        @media (max-width: 480px) {
+            .ascii-art { font-size: 1.5px; }
+        }
+    </style>
+    <script type="importmap">
+    {
+      "imports": {
+        "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+        "react/": "https://esm.sh/react@^19.2.4/",
+        "react": "https://esm.sh/react@^19.2.4",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+        "lucide-react": "https://esm.sh/lucide-react@^0.563.0"
+      }
+    }
+    </script>
+</head>
+<body class="crt">
+    <div id="root"></div>
+</body>
+</html>
